@@ -40,7 +40,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
-      - uses: akhileshns/heroku-deploy@v3.4.6 # This is the action
+      - uses: akhileshns/heroku-deploy@v3.5.7 # This is the action
         with:
           heroku_api_key: ${{secrets.HEROKU_API_KEY}}
           heroku_app_name: "YOUR APP's NAME" #Must be unique in Heroku
@@ -59,22 +59,24 @@ You learn more about GitHub Secrets [here](https://docs.github.com/en/actions/co
 
 The action comes with additional options that you can use to configure your project's behavior on Heroku. You can setup these options under the "with" object as presented above:
 
-| Name                       | Required | Description                                                                                                                                                                                         | Example                                               |
-| -------------------------- | -------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------- |
-| heroku_api_key             | true     | This will be used for authentication. You can find it in your heroku homepage account settings                                                                                                      | \*\*\*                                                |
-| heroku_email               | true     | Email that you use with heroku                                                                                                                                                                      | nsakhilesh02@gmail.com                                |
-| heroku_app_name            | true     | The appname to use for deploying/updating                                                                                                                                                           | demo-rest-api                                         |
-| buildpack                  | false    | An optional buildpack to use when creating the heroku application                                                                                                                                   | https://github.com/heroku/heroku-buildpack-static.git |
-| branch                     | false    | The branch that you would like to deploy to Heroku. Defaults to "HEAD"                                                                                                                              | master, dev, test                                     |
-| dontuseforce               | false    | Set this to true if you don't want to use --force when switching branches                                                                                                                           | true or false                                         |
-| usedocker                  | false    | Will deploy using Dockerfile in project root                                                                                                                                                        | true or false                                         |
-| docker_heroku_process_type | false    | Type of heroku process (web, worker, etc). This option only makes sense when usedocker enabled. Defaults to "web" (Thanks to [singleton11](https://github.com/singleton11) for adding this feature) | web, worker                                           |
-| docker_build_args          | false    | A list of args to pass into the Docker build. This option only makes sense when usedocker enabled.                                                                                                  | NODE_ENV                                              |
-| appdir                     | false    | Set if your app is located in a subdirectory                                                                                                                                                        | api, apis/python                                      |
-| healthcheck                | false    | A URL to which a healthcheck is performed (checks for 200 request)                                                                                                                                  | https://demo-rest-api.herokuapp.com                   |
-| checkstring                | false    | Value to check for when conducting healthcheck requests                                                                                                                                             | ok                                                    |
-| delay                      | false    | Time (in seconds) to wait before performing healthcheck. Defaults to 0 seconds                                                                                                                      | 5                                                     |
-| procfile                   | false    | Contents of the Procfile to save and deploy                                                                                                                                                         | web: npm start                                        |
+| Name                        | Required | Description                                                                                                                                                                                         | Example                                               |
+| --------------------------- | -------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------- |
+| heroku_api_key              | true     | This will be used for authentication. You can find it in your heroku homepage account settings                                                                                                      | \*\*\*                                                |
+| heroku_email                | true     | Email that you use with heroku                                                                                                                                                                      | nsakhilesh02@gmail.com                                |
+| heroku_app_name             | true     | The appname to use for deploying/updating                                                                                                                                                           | demo-rest-api                                         |
+| buildpack                   | false    | An optional buildpack to use when creating the heroku application                                                                                                                                   | https://github.com/heroku/heroku-buildpack-static.git |
+| branch                      | false    | The branch that you would like to deploy to Heroku. Defaults to "HEAD"                                                                                                                              | master, dev, test                                     |
+| dontuseforce                | false    | Set this to true if you don't want to use --force when switching branches                                                                                                                           | true or false                                         |
+| usedocker                   | false    | Will deploy using Dockerfile in project root                                                                                                                                                        | true or false                                         |
+| docker_heroku_process_type  | false    | Type of heroku process (web, worker, etc). This option only makes sense when usedocker enabled. Defaults to "web" (Thanks to [singleton11](https://github.com/singleton11) for adding this feature) | web, worker                                           |
+| docker_build_args           | false    | A list of args to pass into the Docker build. This option only makes sense when usedocker enabled.                                                                                                  | NODE_ENV                                              |
+| appdir                      | false    | Set if your app is located in a subdirectory                                                                                                                                                        | api, apis/python                                      |
+| healthcheck                 | false    | A URL to which a healthcheck is performed (checks for 200 request)                                                                                                                                  | https://demo-rest-api.herokuapp.com                   |
+| checkstring                 | false    | Value to check for when conducting healthcheck requests                                                                                                                                             | ok                                                    |
+| delay                       | false    | Time (in seconds) to wait before performing healthcheck. Defaults to 0 seconds                                                                                                                      | 5                                                     |
+| procfile                    | false    | Contents of the Procfile to save and deploy                                                                                                                                                         | web: npm start                                        |
+| rollbackonhealthcheckfailed | false    | When set to true this will attempt to rollback to the previous release if the healthcheck fails                                                                                                     | true or false                                         |
+| env_file                    | false    | path to an env file (with respect to appdir)                                                                                                                                                        | /.env                                                 |
 
 ## Examples
 
@@ -97,7 +99,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
-      - uses: akhileshns/heroku-deploy@v3.4.6 # This is the action
+      - uses: akhileshns/heroku-deploy@v3.5.7 # This is the action
         with:
           heroku_api_key: ${{secrets.HEROKU_API_KEY}}
           heroku_app_name: "YOUR APP's NAME" #Must be unique in Heroku
@@ -124,7 +126,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
-      - uses: akhileshns/heroku-deploy@v3.4.6 # This is the action
+      - uses: akhileshns/heroku-deploy@v3.5.7 # This is the action
         with:
           heroku_api_key: ${{secrets.HEROKU_API_KEY}}
           heroku_app_name: "YOUR APP's NAME" #Must be unique in Heroku
@@ -163,7 +165,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
-      - uses: akhileshns/heroku-deploy@v3.4.6 # This is the action
+      - uses: akhileshns/heroku-deploy@v3.5.7 # This is the action
         with:
           heroku_api_key: ${{secrets.HEROKU_API_KEY}}
           heroku_app_name: "YOUR APP's NAME" #Must be unique in Heroku
@@ -190,7 +192,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
-      - uses: akhileshns/heroku-deploy@v3.4.6 # This is the action
+      - uses: akhileshns/heroku-deploy@v3.5.7 # This is the action
         with:
           heroku_api_key: ${{secrets.HEROKU_API_KEY}}
           heroku_app_name: "YOUR APP's NAME" #Must be unique in Heroku
@@ -219,7 +221,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
-      - uses: akhileshns/heroku-deploy@v3.4.6 # This is the action
+      - uses: akhileshns/heroku-deploy@v3.5.7 # This is the action
         with:
           heroku_api_key: ${{secrets.HEROKU_API_KEY}}
           heroku_app_name: "YOUR APP's NAME" #Must be unique in Heroku
@@ -248,7 +250,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
-      - uses: akhileshns/heroku-deploy@v3.4.6 # This is the action
+      - uses: akhileshns/heroku-deploy@v3.5.7 # This is the action
         with:
           heroku_api_key: ${{secrets.HEROKU_API_KEY}}
           heroku_app_name: "YOUR APP's NAME" #Must be unique in Heroku
@@ -279,7 +281,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
-      - uses: akhileshns/heroku-deploy@v3.4.6 # This is the action
+      - uses: akhileshns/heroku-deploy@v3.5.7 # This is the action
         with:
           heroku_api_key: ${{secrets.HEROKU_API_KEY}}
           heroku_app_name: "YOUR APP's NAME" #Must be unique in Heroku
@@ -309,7 +311,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
-      - uses: akhileshns/heroku-deploy@v3.4.6 # This is the action
+      - uses: akhileshns/heroku-deploy@v3.5.7 # This is the action
         with:
           heroku_api_key: ${{secrets.HEROKU_API_KEY}}
           heroku_app_name: "YOUR APP's NAME" #Must be unique in Heroku
@@ -320,6 +322,38 @@ jobs:
 ```
 
 By default, the delay will be 0 if you choose to not set it
+
+### Rollback on healthcheck failure
+
+You can set the rollbackonhealthcheckfailed option to ensure that your application is rolled back if the healthcheck fails.
+_.github/workflows/main.yml_
+
+```yaml
+name: Deploy
+
+on:
+  push:
+    branches:
+      - master # Changing the branch here would also work
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - uses: akhileshns/heroku-deploy@v3.5.7 # This is the action
+        with:
+          heroku_api_key: ${{secrets.HEROKU_API_KEY}}
+          heroku_app_name: "YOUR APP's NAME" #Must be unique in Heroku
+          heroku_email: "YOUR EMAIL"
+          healthcheck: "https://[YOUR APP's NAME].herokuapp.com/health"
+          checkstring: "ok"
+          rollbackonhealthcheckfailed: true
+```
+
+By default, the application will not be rolled back if the healthcheck fails.
+
+Thanks to [FridaTveit](https://github.com/FridaTveit) for adding this feature
 
 ## Environment Variables
 
@@ -340,7 +374,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
-      - uses: akhileshns/heroku-deploy@v3.4.6 # This is the action
+      - uses: akhileshns/heroku-deploy@v3.5.7 # This is the action
         with:
           heroku_api_key: ${{secrets.HEROKU_API_KEY}}
           heroku_app_name: "YOUR APP's NAME" #Must be unique in Heroku
@@ -355,6 +389,53 @@ Note that the variables must start with "**HD\_**". This is is important so the 
 On that note, if you've set these variables and have deployed your app, you can check your Heroku App's config vars and you'll find that they have been set with the env variables you have passed.
 
 **PLEASE NOTE**: The "**HD\_**" will be scrapped from the variable your name by the action. So in your project, "**FIREBASE_API_KEY**" will be passed instead of "**HD_FIREBASE_API_KEY**" (for example) and you can see this if you check your Heroku App's config vars. We understand that this can be confusing but this is again to ensure Platform independence and so that you don't have to use HD_FIREBASE_API_KEY if you choose to stop using Heroku
+
+### ENV File
+
+You can if you wish also pass the path to an env file (with respect to your appdir path) as an option to the action. The action will then read that file and set the config vars accordingly in Heroku
+
+_.github/workflows/main.yml_
+
+```yaml
+name: Deploy
+
+on:
+  push:
+    branches:
+      - master # Changing the branch here would also work
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - uses: akhileshns/heroku-deploy@v3.5.7 # This is the action
+        with:
+          heroku_api_key: ${{secrets.HEROKU_API_KEY}}
+          heroku_app_name: "YOUR APP's NAME" #Must be unique in Heroku
+          heroku_email: "YOUR EMAIL"
+          env_file: ".env"
+        env:
+          HD_FIREBASE_API_KEY: ${{secrets.FIREBASE_API_KEY}}
+          HD_RANDOM_DATA: "Hello"
+```
+
+Example env file
+
+```
+HELLO=world
+WORLD=hello
+```
+
+There are two important points to keep in mind when using the **env_file** option.
+
+1. The first is that in can be used in conjunction with **env** option of the action as you have seen above
+
+2. The second is that unlike in the **env** option, you do not need to prefix the env variables in the .env file with "HD\_".
+
+   (For those of you who are wondering why this is the case, when using the **env** option, the env variables are passed directly into the process along with all the other env variables passed by GitHub Actions, the language you are using etc and the "HD\_" in that case is to help differentiate your env variables from them. But when using a file to pass the env variables, the action manually reads the file so there is no chance of stray env variables being passed by your language, github actions etc and hence no need to add the "HD\_")
+
+Also note that using a file (which can be named anything so long as it follows the format of a standard env file) can be useful if you're trying to send a very large number of env variables to Heroku, it does mean that keeping the .env file secure and private is entirely in your hands so tread with caution.
 
 ## Procfile Passing
 
@@ -375,7 +456,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
-      - uses: akhileshns/heroku-deploy@v3.4.6 # This is the action
+      - uses: akhileshns/heroku-deploy@v3.5.7 # This is the action
         with:
           heroku_api_key: ${{secrets.HEROKU_API_KEY}}
           heroku_app_name: "YOUR APP's NAME" #Must be unique in Heroku
